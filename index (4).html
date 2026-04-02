@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.S.S.K.P.V. MASONA </title>
+    <style>
+        :root { --primary: #1a237e; --secondary: #ffc107; --bg: #f8f9fa; --white: #fff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: #333; line-height: 1.6; }
+        
+        /* Header & Navigation */
+        header { 
+            background: var(--primary); color: var(--white); padding: 10px 5%; 
+            display: flex; align-items: center; justify-content: space-between; 
+            border-bottom: 4px solid var(--secondary); position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--white); background: #fff; object-fit: cover; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
+
+        /* Banner Style */
+        .banner-wrap { padding: 20px; background: var(--bg); }
+        .banner { 
+            width: 100%; height: 350px; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('school-banner.jpg');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border: 5px solid var(--secondary); border-radius: 15px; color: white; text-align: center;
+        }
+
+        /* Layout Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .card h3 { color: var(--primary); border-bottom: 3px solid var(--secondary); display: inline-block; margin-bottom: 20px; }
+
+        /* Leadership Boxes */
+        .leadership { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+        .leader-box { text-align: center; background: #f0f2f5; padding: 15px; border-radius: 10px; border: 1px solid #ddd; }
+        .leader-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 10px; }
+
+        /* Gallery Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
+        .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid #ddd; height: 100px; }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Result Input & Buttons */
+        .res-input { width: 100%; padding: 12px; border: 1.5px solid #ccc; border-radius: 8px; margin-bottom: 15px; font-size: 1rem; }
+        .btn-action { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        
+        /* Marksheet Table Design */
+        .marksheet-box { border: 6px double var(--primary); padding: 30px; background: white; color: black; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1.5px solid #000; padding: 10px; text-align: center; font-size: 0.9rem; }
+        th { background: #eee; }
+
+        /* Footer Style - New Addition */
+        footer { background: var(--primary); color: white; padding: 40px 5%; margin-top: 50px; border-top: 5px solid var(--secondary); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .footer-box h4 { color: var(--secondary); margin-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.1); display: inline-block; padding-bottom: 5px; }
+        .footer-box p { font-size: 0.9rem; line-height: 1.8; opacity: 0.9; }
+        .copyright { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+        /* PRINT LOGIC */
+        @media print {
+            body * { visibility: hidden; } 
+            #printable-area, #printable-area * { visibility: visible; } 
+            #printable-area { position: absolute; left: 0; top: 0; width: 100%; border: none; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" class="logo-img" onerror="this.src='https://via.placeholder.com/70';">
+    <div style="text-align: center; flex: 1;">
+        <h1 style="font-size: 1.4rem;">SHREE SHIV SAMAJ KALYAN PRATHMIC VIDDYALAY, MASONA</h1>
+        <p style="font-size: 0.8rem;">Masona, Azamatgarh, Azamgarh (U.P.) 276124 </p>
+    </div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#result">Result</a>
+        <a href="#about-school">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </div>
+</header>
+
+<div class="banner-wrap">
+    <div class="banner">
+        <h2 style="font-size: 2.2rem;">WELCOME TO OUR SCHOOL </h2>
+        <p>Session 2025-26 | Quality Education For All</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main-grid">
+        <div class="left-col">
+            <div id="result" class="card">
+                <h3>🎓 Online Result Portal</h3>
+                <div id="search-box" class="no-print">
+                    <div id="step1">
+                        <input type="text" id="userInput" class="res-input" placeholder="Roll No or Student Name">
+                        <button class="btn-action" onclick="verifyData()">Find Record</button>
+                    </div>
+                    <div id="step2" style="display:none; margin-top:10px;">
+                        <input type="text" id="dobInput" class="res-input" placeholder="DOB (DD/MM/YYYY)">
+                        <button class="btn-action" style="background:#2e7d32;" onclick="showFinalMarksheet()">View Marksheet</button>
+                    </div>
+                </div>
+                <div id="msOutput"></div>
+            </div>
+
+            <div id="gallery" class="card">
+                <h3>🖼️ School Gallery</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="g1.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g2.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g3.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g4.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g5.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g6.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g7.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g8.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g9.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g10.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g11.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item"><img src="g12.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div id="about" class="card">
+                <h3>👨‍🏫 Leadership</h3>
+                <div class="leadership">
+                    <div class="leader-box">
+                        <img src="chairman.jpg" class="leader-img" onerror="this.src='https://via.placeholder.com/100';">
+                        <h5>Chairman</h5>
+                    </div>
+                    <div class="leader-box">
+                        <img src="principle.jpg" class="leader-img" onerror="this.src='https://via.placeholder.com/100';">
+                        <h5>Principal</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="card">
+                <h3>📞 Contact Us</h3>
+                <p style="font-size: 0.9rem; margin-bottom:5px;"><b>Address:</b> Masona, Azamatgarh, Azamgarh, U.P.</p>
+                <p style="font-size: 0.9rem; margin-bottom:5px;"><b>Mobile:</b> +91 9455196398</p>
+                <p style="font-size: 0.9rem;"><b>Email:</b> bipinrai851@gmail.com</p>
+            </div>
+            
+            <div class="card">
+                <h3>📢 Notice Board</h3>
+                <marquee direction="up" scrollamount="2" style="height: 100px; color: red; font-weight: bold;">
+                    • Annual Exam Results 2025-26 Live!<br><br>
+                    • Admission Open for Session 2026-27.
+                </marquee>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="about-school" class="no-print">
+    <div class="footer-grid">
+        <div class="footer-box">
+            <h4>About Our School</h4>
+            <p>Shree Shiv Samaj Kalyan Prathamik Viddyalay, Masona (Azamatgarh), is a temple of learning dedicated to the holistic development of children. We focus on providing quality education from Nursery to Class 8th, blending traditional values with modern digital learning.</p>
+        </div>
+        <div class="footer-box">
+            <h4>Our Mission</h4>
+            <p>Our mission is to nurture young minds in a rural environment, ensuring every child in Azamgarh gets access to the best academic resources, discipline, and creative growth.</p>
+        </div>
+        <div class="footer-box">
+            <h4>School Timing</h4>
+            <p>Summer: 7:30 AM - 12:30 PM<br>Winter: 9:00 AM - 3:00 PM<br>Working Days: Monday - Saturday</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2026 S.S.S.K.P.V. MASONA EDUCATION PORTAL | Designed for Excellence</p>
+    </div>
+</footer>
+
+<script>
+    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCrsAqZdH6EB8BXL0MDLG5H58Xrr5G5BtXy0kSf9-0CoV26yDHpZCw9zT9pFK99KTMDp2LBZM_13Uv/pub?gid=21315953&single=true&output=csv";
+    let foundStudent = null;
+
+    async function verifyData() {
+        const inputVal = document.getElementById('userInput').value.trim().toLowerCase();
+        if(!inputVal) return alert("Please enter Roll No or Name");
+        try {
+            const res = await fetch(csvUrl);
+            const data = await res.text();
+            const rows = data.split("\n").map(r => r.split(","));
+            foundStudent = rows.find(r => r[0].trim() === inputVal || r[1].trim().toLowerCase().includes(inputVal));
+            if(foundStudent) {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+            } else { alert("Student Record Not Found!"); }
+        } catch(e) { alert("Error connecting to data server!"); }
+    }
+
+    function getSubjects(s) {
+        const cls = s[4].trim().toUpperCase();
+        let list = []; let totalMax = 800;
+        if (["NURSERY", "LKG", "UKG", "1", "1ST"].some(c => cls.includes(c))) {
+            list = [["Hindi (W+O)", s[5], s[8], 200], ["English (W+O)", s[6], s[9], 200], ["Math (W+O)", s[7], s[10], 200], ["Art & P.T.", s[11], s[12], 200]];
+        } else if (["2", "3"].some(c => cls.includes(c))) {
+            list = [["Hindi", s[5], "-", 100], ["English", s[6], "-", 100], ["Math", s[7], "-", 100], ["Social", s[8], "-", 100], ["Science", s[9], "-", 100], ["G.K.", s[10], "-", 100], ["Art", s[11], "-", 100], ["P.T.", s[12], "-", 100]];
+        } else if (["4", "5"].some(c => cls.includes(c))) {
+            list = [["Hindi", s[5], "-", 100], ["English", s[6], "-", 100], ["Math", s[7], "-", 100], ["Sanskrit", s[8], "-", 100], ["Social", s[9], "-", 100], ["Art", s[11], "-", 100], ["G.K.", s[12], "-", 100]];
+            totalMax = 700;
+        } else {
+            list = [["Hindi", s[5], "-", 100], ["English", s[6], "-", 100], ["Math", s[7], "-", 100], ["Socail", s[8], "-", 100], ["Sanskrit", s[9], "-", 100], ["home science", s[10], "-", 100], ["Art", s[11], "-", 100], ["Evs", s[12], "-", 100], ["play and health education.", s[13], "-", 100], ["science", s[14], "-", 100]];
+            totalMax = 1000;
+        }
+        return { list, totalMax };
+    }
+
+    function showFinalMarksheet() {
+        const dob = document.getElementById('dobInput').value.trim();
+        if(foundStudent[2].trim() === dob) {
+            const s = foundStudent;
+            const resData = getSubjects(s);
+            document.getElementById('search-box').style.display = 'none';
+            let tableRows = resData.list.map(sub => `
+                <tr>
+                    <td>${sub[0]}</td>
+                    <td>${sub[3]}</td>
+                    <td>${sub[2] !== "-" ? (parseInt(sub[1]||0) + parseInt(sub[2]||0)) : (sub[1]||0)}</td>
+                </tr>`).join('');
+
+            document.getElementById('msOutput').innerHTML = `
+                <div id="printable-area">
+                    <div class="marksheet-box">
+                        <h2 style="text-align:center;">SHREE SHIV SAMAJ KALYAN PRATHMIC VIDDYALAY, MASONA,AZMATGARH,AZAMGARH, 276124</h2>
+                        <p style="text-align:center; font-size:0.85rem; border-bottom:2px solid #000; padding-bottom:5px;">PROGRESS REPORT (SESSION 2025-26)</p>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; margin-top:20px; font-size:0.9rem;">
+                            <p><b>Name:</b> ${s[1]}</p><p><b>Roll No:</b> ${s[0]}</p>
+                            <p><b>Father:</b> ${s[3]}</p><p><b>Class:</b> ${s[4]}</p>
+                        </div>
+                        <table>
+                            <thead><tr><th>Subject Name</th><th>Max Marks</th><th>Obtained</th></tr></thead>
+                            <tbody>
+                                ${tableRows}
+                                <tr style="background:#eee; font-weight:bold;">
+                                    <td>GRAND TOTAL</td><td>${resData.totalMax}</td><td>${s[s.length-1]}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="no-print" style="margin-top:25px; display:flex; gap:10px;">
+                        <button class="btn-action" style="background:#444;" onclick="window.print()">🖨️ PRINT MARKSHEET</button>
+                        <button class="btn-action" style="background:#2e7d32;" onclick="location.reload()">🔄 NEW SEARCH</button>
+                    </div>
+                </div>`;
+        } else { alert("Date of Birth did not match!"); }
+    }
+</script>
+</body>
+</html>
