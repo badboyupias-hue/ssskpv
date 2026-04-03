@@ -38,12 +38,21 @@
         /* Leadership Boxes */
         .leadership { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
         .leader-box { text-align: center; background: #f0f2f5; padding: 15px; border-radius: 10px; border: 1px solid #ddd; }
+        .leader-img-wrap { position: relative; display: inline-block; }
         .leader-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin-bottom: 10px; }
+        .leader-intro { margin-top: 5px; font-size: 0.8rem; color: #555; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.3s ease, max-height 0.3s ease; }
+        .leader-box:hover .leader-intro { opacity: 1; max-height: 100px; }
 
         /* Gallery Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
-        .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid #ddd; height: 100px; }
+        .gallery-item { border-radius: 8px; overflow: hidden; border: 1px solid #ddd; height: 100px; cursor: pointer; }
         .gallery-img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Lightbox */
+        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img { max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #fff; cursor: pointer; font-weight: bold; }
 
         /* Result Input & Buttons */
         .res-input { width: 100%; padding: 12px; border: 1.5px solid #ccc; border-radius: 8px; margin-bottom: 15px; font-size: 1rem; }
@@ -116,18 +125,18 @@
             <div id="gallery" class="card">
                 <h3>🖼️ School Gallery</h3>
                 <div class="gallery-grid">
-                    <div class="gallery-item"><img src="g1.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g2.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g3.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g4.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g5.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g6.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g7.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g8.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g9.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g10.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g11.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
-                    <div class="gallery-item"><img src="g12.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g1.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g2.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g3.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g4.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g5.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g6.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g7.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g8.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g9.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g10.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g11.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="g12.jpg" class="gallery-img" onerror="this.src='https://via.placeholder.com/150';"></div>
                 </div>
             </div>
         </div>
@@ -137,12 +146,18 @@
                 <h3>👨‍🏫 Leadership</h3>
                 <div class="leadership">
                     <div class="leader-box">
-                        <img src="chairman.jpg" class="leader-img" onerror="this.src='https://via.placeholder.com/100';">
+                        <div class="leader-img-wrap">
+                            <img src="chairman.jpg" class="leader-img" onerror="this.src='https://via.placeholder.com/100';">
+                        </div>
                         <h5>Chairman</h5>
+                        <p class="leader-intro">Visionary leader guiding the school towards academic excellence and community development.</p>
                     </div>
                     <div class="leader-box">
-                        <img src="principle.jpg" class="leader-img" onerror="this.src='https://via.placeholder.com/100';">
+                        <div class="leader-img-wrap">
+                            <img src="principle.jpg" class="leader-img" onerror="this.src='https://via.placeholder.com/100';">
+                        </div>
                         <h5>Principal</h5>
+                        <p class="leader-intro">Dedicated educator committed to nurturing young minds with discipline and care.</p>
                     </div>
                 </div>
             </div>
@@ -150,7 +165,7 @@
             <div id="contact" class="card">
                 <h3>📞 Contact Us</h3>
                 <p style="font-size: 0.9rem; margin-bottom:5px;"><b>Address:</b> Masona, Azamatgarh, Azamgarh, U.P.</p>
-                <p style="font-size: 0.9rem; margin-bottom:5px;"><b>Mobile:</b> +91 9455196398, 8726856986</p>
+                <p style="font-size: 0.9rem; margin-bottom:5px;"><b>Mobile:</b> +91 9455196398</p>
                 <p style="font-size: 0.9rem;"><b>Email:</b> bipinrai851@gmail.com</p>
             </div>
             
@@ -184,6 +199,12 @@
         <p>&copy; 2026 S.S.S.K.P.V. MASONA EDUCATION PORTAL | Designed for Excellence</p>
     </div>
 </footer>
+
+<!-- Lightbox Overlay -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Full Size Photo">
+</div>
 
 <script>
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCrsAqZdH6EB8BXL0MDLG5H58Xrr5G5BtXy0kSf9-0CoV26yDHpZCw9zT9pFK99KTMDp2LBZM_13Uv/pub?gid=21315953&single=true&output=csv";
@@ -259,6 +280,15 @@
                     </div>
                 </div>`;
         } else { alert("Date of Birth did not match!"); }
+    }
+    // Lightbox functions
+    function openLightbox(el) {
+        var img = el.querySelector('img');
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
     }
 </script>
 </body>
